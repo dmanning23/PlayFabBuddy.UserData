@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PlayFabBuddy.UserData.SharedProject", "PlayFabBuddy.UserData.SharedProject\PlayFabBuddy.UserData.SharedProject.shproj", "{1B45B3F8-D375-42CC-B41A-8E2D1C9D3DF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayFabBuddy.UserData.WindowsDX", "PlayFabBuddy.UserData.WindowsDX\PlayFabBuddy.UserData.WindowsDX.csproj", "{6E580A00-A1C2-424E-9BC0-455AB2B4B1DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayFabBuddy.UserData.iOS", "PlayFabBuddy.UserData.iOS\PlayFabBuddy.UserData.iOS.csproj", "{E5C4E84A-E1A8-4CB9-8A42-61FA25849ED3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayFabBuddy.UserData.Android", "PlayFabBuddy.UserData.Android\PlayFabBuddy.UserData.Android.csproj", "{D3BDF85E-562D-4DA7-8721-38C053D345AE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FB31C267-4800-4429-9379-3E2402334F36}"
+	ProjectSection(SolutionItems) = preProject
+		buildNugetPackages.ps1 = buildNugetPackages.ps1
+		PlayFabBuddy.UserData.nuspec = PlayFabBuddy.UserData.nuspec
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		PlayFabBuddy.UserData.SharedProject\PlayFabBuddy.UserData.SharedProject.projitems*{1b45b3f8-d375-42cc-b41a-8e2d1c9d3df4}*SharedItemsImports = 13
+		PlayFabBuddy.UserData.SharedProject\PlayFabBuddy.UserData.SharedProject.projitems*{6e580a00-a1c2-424e-9bc0-455ab2b4b1dc}*SharedItemsImports = 4
+		PlayFabBuddy.UserData.SharedProject\PlayFabBuddy.UserData.SharedProject.projitems*{d3bdf85e-562d-4da7-8721-38c053d345ae}*SharedItemsImports = 4
+		PlayFabBuddy.UserData.SharedProject\PlayFabBuddy.UserData.SharedProject.projitems*{e5c4e84a-e1a8-4cb9-8a42-61fa25849ed3}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E580A00-A1C2-424E-9BC0-455AB2B4B1DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E580A00-A1C2-424E-9BC0-455AB2B4B1DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E580A00-A1C2-424E-9BC0-455AB2B4B1DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E580A00-A1C2-424E-9BC0-455AB2B4B1DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5C4E84A-E1A8-4CB9-8A42-61FA25849ED3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5C4E84A-E1A8-4CB9-8A42-61FA25849ED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5C4E84A-E1A8-4CB9-8A42-61FA25849ED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5C4E84A-E1A8-4CB9-8A42-61FA25849ED3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3BDF85E-562D-4DA7-8721-38C053D345AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3BDF85E-562D-4DA7-8721-38C053D345AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3BDF85E-562D-4DA7-8721-38C053D345AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3BDF85E-562D-4DA7-8721-38C053D345AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C726CDFA-F696-40BF-8351-7D1C948D7F24}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+	<metadata>
+		<id>PlayFabBuddy.UserData</id>
+		<version>2.0.0</version>
+		<title>PlayFabBuddy.UserData</title>
+		<authors>dmanning23</authors>
+		<owners>dmanning23</owners>
+		<projectUrl>https://github.com/dmanning23/PlayFabBuddy.UserData</projectUrl>
+		<licenseUrl>https://github.com/dmanning23/PlayFabBuddy.UserData/blob/master/LICENSE.txt</licenseUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>UserData wrapper around the PlayFab Xamarin client SDK</description>
+		<releaseNotes />
+		<copyright>Copyright 2016</copyright>
+		<tags>android, ios, windows universal, monogame, xamarin</tags>
+		<dependencies>
+
+			<!--Xamarin.Android-->
+			<group targetFramework="MonoAndroid10">
+				<dependency id="PlayFabBuddy.Auth" version="2.0"/>
+			</group>
+
+			<!--Xamarin.iOS Unified-->
+			<group targetFramework="Xamarin.iOS10">
+				<dependency id="PlayFabBuddy.Auth" version="2.0"/>
+			</group>
+
+
+			<group targetFramework="net451">
+				<dependency id="PlayFabBuddy.Auth" version="2.0"/>
+			</group>
+
+		</dependencies>
+	</metadata>
+	<files>
+
+		<!--Xamarin.Android-->
+		<file src="PlayFabBuddy.UserData.Android\bin\Release\PlayFabBuddy.UserData.Android.pdb" target="lib\MonoAndroid10\PlayFabBuddy.UserData.Android.pdb" />
+		<file src="PlayFabBuddy.UserData.Android\bin\Release\PlayFabBuddy.UserData.Android.dll" target="lib\MonoAndroid10\PlayFabBuddy.UserData.Android.dll" />
+
+		<!--Xamarin.iOS Unified-->
+		<file src="PlayFabBuddy.UserData.iOS\bin\Release\PlayFabBuddy.UserData.iOS.pdb" target="lib\Xamarin.iOS10\PlayFabBuddy.UserData.iOS.pdb" />
+		<file src="PlayFabBuddy.UserData.iOS\bin\Release\PlayFabBuddy.UserData.iOS.dll" target="lib\Xamarin.iOS10\PlayFabBuddy.UserData.iOS.dll" />
+		
+		<!--WindowsDX-->
+		<file src="PlayFabBuddy.UserData.WindowsDX\bin\Release\PlayFabBuddy.UserData.WindowsDX.pdb" target="lib\net451\PlayFabBuddy.UserData.WindowsDX.pdb" />
+		<file src="PlayFabBuddy.UserData.WindowsDX\bin\Release\PlayFabBuddy.UserData.WindowsDX.dll" target="lib\net451\PlayFabBuddy.UserData.WindowsDX.dll" />
+
+	</files>
+</package>
