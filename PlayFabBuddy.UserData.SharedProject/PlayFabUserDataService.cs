@@ -1,4 +1,5 @@
-﻿using PlayFab.ClientModels;
+﻿using PlayFab;
+using PlayFab.ClientModels;
 using PlayFabBuddyLib.Auth;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,6 +10,10 @@ namespace PlayFabBuddyLib.UserData
 	{
 		#region Properties
 
+		public Dictionary<string, string> UserData { get; private set; }
+
+		public Dictionary<string, string> UserPublisherData { get; private set; }
+
 		IPlayFabClient _playfab;
 		IPlayFabAuthService _auth;
 
@@ -18,6 +23,9 @@ namespace PlayFabBuddyLib.UserData
 
 		public PlayFabUserDataService(IPlayFabClient playfab, IPlayFabAuthService auth)
 		{
+			UserData = new Dictionary<string, string>();
+			UserPublisherData = new Dictionary<string, string>();
+
 			_playfab = playfab;
 			_auth = auth;
 		}
@@ -29,16 +37,7 @@ namespace PlayFabBuddyLib.UserData
 				PlayFabId = _auth.PlayFabId,
 				Keys = keys,
 			});
-
-			var data = new Dictionary<string, string>();
-			if (null == result.Error)
-			{
-				foreach (var dataValue in result.Result.Data)
-				{
-					data.Add(dataValue.Key, dataValue.Value.Value);
-				}
-			}
-			return data;
+			return PopulateData(result, UserData);
 		}
 
 		/// <summary>
@@ -53,12 +52,16 @@ namespace PlayFabBuddyLib.UserData
 				Keys = keys,
 			});
 
-			var data = new Dictionary<string, string>();
+			return PopulateData(result, UserPublisherData);
+		}
+
+		private static Dictionary<string, string> PopulateData(PlayFabResult<GetUserDataResult> result, Dictionary<string, string> data)
+		{
 			if (null == result.Error)
 			{
 				foreach (var dataValue in result.Result.Data)
 				{
-					data.Add(dataValue.Key, dataValue.Value.Value);
+					data[dataValue.Key] = dataValue.Value.Value;
 				}
 			}
 			return data;
@@ -69,6 +72,11 @@ namespace PlayFabBuddyLib.UserData
 		/// </summary>
 		public async Task<string> SetUserData(Dictionary<string, string> data)
 		{
+			foreach (var dataValue in data)
+			{
+				UserData[dataValue.Key] = dataValue.Value;
+			}
+
 			var result = await _playfab.UpdateUserDataAsync(new UpdateUserDataRequest()
 			{
 				Data = data
@@ -84,6 +92,11 @@ namespace PlayFabBuddyLib.UserData
 		/// <returns>Empty if successul, the error message if something went wrong</returns>
 		public async Task<string> SetUserPublisherData(Dictionary<string, string> data)
 		{
+			foreach (var dataValue in data)
+			{
+				UserPublisherData[dataValue.Key] = dataValue.Value;
+			}
+
 			var result = await _playfab.UpdateUserPublisherDataAsync(new UpdateUserDataRequest()
 			{
 				Data = data
