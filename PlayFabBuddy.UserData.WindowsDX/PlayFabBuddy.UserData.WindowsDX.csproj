@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PlayFabBuddy.UserData.WindowsDX</RootNamespace>
     <AssemblyName>PlayFabBuddy.UserData.WindowsDX</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,10 +42,10 @@
       <HintPath>..\packages\SimpleStorage.1.4.19\lib\net45\PerpetualEngine.SimpleStorage.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="PlayFabBuddy.Auth.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PlayFabBuddy.Auth.2.0.15\lib\net451\PlayFabBuddy.Auth.WindowsDX.dll</HintPath>
+      <HintPath>..\packages\PlayFabBuddy.Auth.2.0.17\lib\net451\PlayFabBuddy.Auth.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="PlayFabBuddy.Core.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PlayFabBuddy.Core.2.0.7\lib\net451\PlayFabBuddy.Core.WindowsDX.dll</HintPath>
+      <HintPath>..\packages\PlayFabBuddy.Core.2.0.10\lib\net451\PlayFabBuddy.Core.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="Plugin.DeviceInfo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xam.Plugin.DeviceInfo.4.2.0-beta\lib\net45\Plugin.DeviceInfo.dll</HintPath>
