@@ -10,9 +10,11 @@ namespace PlayFabBuddyLib.UserData
 	{
 		#region Properties
 
-		public Dictionary<string, string> UserData { get; private set; }
+		protected Dictionary<string, string> TitleData { get; set; }
 
-		public Dictionary<string, string> UserPublisherData { get; private set; }
+		protected Dictionary<string, string> UserData { get; set; }
+
+		protected Dictionary<string, string> UserPublisherData { get; set; }
 
 		IPlayFabClient _playfab;
 		IPlayFabAuthService _auth;
@@ -25,46 +27,58 @@ namespace PlayFabBuddyLib.UserData
 		{
 			UserData = new Dictionary<string, string>();
 			UserPublisherData = new Dictionary<string, string>();
+			TitleData = new Dictionary<string, string>();
 
 			_playfab = playfab;
 			_auth = auth;
 		}
 
-		public async Task<Dictionary<string, string>> GetUserData(List<string> keys)
+		public async Task<Dictionary<string, string>> GetTitleData(List<string> keys)
 		{
+			//Check which keys need to be updated
+			var data = new Dictionary<string, string>();
+			var keysToCheck = GetOutgoingKeys(keys, TitleData, data, false);
+
+			//Call out to playfab for any items we need to retrieve
+			var result = await _playfab.GetTitleDataAsync(new GetTitleDataRequest()
+			{
+				Keys = keysToCheck,
+			});
+
+			//Store the results in the cache and return the completed list
+			return PopulateData(result, TitleData, data);
+		}
+
+		public async Task<Dictionary<string, string>> GetUserData(List<string> keys, bool force = false)
+		{
+			var data = new Dictionary<string, string>();
+			var keysToCheck = GetOutgoingKeys(keys, UserData, data, false);
+
 			var result = await _playfab.GetUserDataAsync(new GetUserDataRequest()
 			{
 				PlayFabId = _auth.PlayFabId,
-				Keys = keys,
+				Keys = keysToCheck,
 			});
-			return PopulateData(result, UserData);
+
+			return PopulateData(result, UserData, data);
 		}
 
 		/// <summary>
 		/// Get the current logged in user's publisher data
 		/// </summary>
 		/// <returns></returns>
-		public async Task<Dictionary<string, string>> GetUserPublisherData(List<string> keys)
+		public async Task<Dictionary<string, string>> GetUserPublisherData(List<string> keys, bool force = false)
 		{
+			var data = new Dictionary<string, string>();
+			var keysToCheck = GetOutgoingKeys(keys, UserPublisherData, data, false);
+
 			var result = await _playfab.GetUserPublisherDataAsync(new GetUserDataRequest()
 			{
 				PlayFabId = _auth.PlayFabId,
-				Keys = keys,
+				Keys = keysToCheck,
 			});
 
-			return PopulateData(result, UserPublisherData);
-		}
-
-		private static Dictionary<string, string> PopulateData(PlayFabResult<GetUserDataResult> result, Dictionary<string, string> data)
-		{
-			if (null == result.Error)
-			{
-				foreach (var dataValue in result.Result.Data)
-				{
-					data[dataValue.Key] = dataValue.Value.Value;
-				}
-			}
-			return data;
+			return PopulateData(result, UserPublisherData, data);
 		}
 
 		/// <summary>
@@ -103,6 +117,57 @@ namespace PlayFabBuddyLib.UserData
 			});
 
 			return result.Error?.ErrorMessage ?? string.Empty;
+		}
+
+		protected List<string> GetOutgoingKeys(List<string> inputKeys, Dictionary<string, string> cache, Dictionary<string, string> output, bool force)
+		{
+			//if forcing it, we want to pull all the values from the backend.
+			if (force)
+			{
+				return inputKeys;
+			}
+
+			var outgoingKeys = new List<string>();
+
+			foreach (var key in inputKeys)
+			{
+				if (cache.ContainsKey(key))
+				{
+					output.Add(key, cache[key]);
+				}
+				else
+				{
+					outgoingKeys.Add(key);
+				}
+			}
+
+			return outgoingKeys;
+		}
+
+		protected Dictionary<string, string> PopulateData(PlayFabResult<GetUserDataResult> result, Dictionary<string, string> cache, Dictionary<string, string> data)
+		{
+			if (null == result.Error)
+			{
+				foreach (var dataValue in result.Result.Data)
+				{
+					cache[dataValue.Key] = dataValue.Value.Value;
+					data[dataValue.Key] = dataValue.Value.Value;
+				}
+			}
+			return data;
+		}
+
+		protected Dictionary<string, string> PopulateData(PlayFabResult<GetTitleDataResult> result, Dictionary<string, string> cache, Dictionary<string, string> data)
+		{
+			if (null == result.Error)
+			{
+				foreach (var dataValue in result.Result.Data)
+				{
+					cache[dataValue.Key] = dataValue.Value;
+					data[dataValue.Key] = dataValue.Value;
+				}
+			}
+			return data;
 		}
 
 		#endregion //Methods

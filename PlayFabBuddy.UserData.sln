@@ -17,12 +17,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		PlayFabBuddy.UserData.nuspec = PlayFabBuddy.UserData.nuspec
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayFabBuddy.UserData.Tests", "PlayFabBuddy.UserData.Tests\PlayFabBuddy.UserData.Tests.csproj", "{F7DCDDDB-22CF-4FBA-B613-9FF05A26EDDE}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		PlayFabBuddy.UserData.SharedProject\PlayFabBuddy.UserData.SharedProject.projitems*{1b45b3f8-d375-42cc-b41a-8e2d1c9d3df4}*SharedItemsImports = 13
 		PlayFabBuddy.UserData.SharedProject\PlayFabBuddy.UserData.SharedProject.projitems*{6e580a00-a1c2-424e-9bc0-455ab2b4b1dc}*SharedItemsImports = 4
 		PlayFabBuddy.UserData.SharedProject\PlayFabBuddy.UserData.SharedProject.projitems*{d3bdf85e-562d-4da7-8721-38c053d345ae}*SharedItemsImports = 4
 		PlayFabBuddy.UserData.SharedProject\PlayFabBuddy.UserData.SharedProject.projitems*{e5c4e84a-e1a8-4cb9-8a42-61fa25849ed3}*SharedItemsImports = 4
+		PlayFabBuddy.UserData.SharedProject\PlayFabBuddy.UserData.SharedProject.projitems*{f7dcdddb-22cf-4fba-b613-9ff05a26edde}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +44,10 @@ Global
 		{D3BDF85E-562D-4DA7-8721-38C053D345AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3BDF85E-562D-4DA7-8721-38C053D345AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3BDF85E-562D-4DA7-8721-38C053D345AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7DCDDDB-22CF-4FBA-B613-9FF05A26EDDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7DCDDDB-22CF-4FBA-B613-9FF05A26EDDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7DCDDDB-22CF-4FBA-B613-9FF05A26EDDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7DCDDDB-22CF-4FBA-B613-9FF05A26EDDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
