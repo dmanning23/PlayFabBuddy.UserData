@@ -39,10 +39,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="PlayFabBuddy.Auth">
-      <Version>2.0.24</Version>
+      <Version>2.0.26</Version>
     </PackageReference>
     <PackageReference Include="PlayFabBuddy.Core">
-      <Version>2.0.16</Version>
+      <Version>2.0.17</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
